@@ -6,20 +6,30 @@
     <router-link to="/about">About</router-link>
   </div>
   <RouterView />
+  <HelloWorld  :msg="'hello word'" v-bind="{ items }" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-// import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue'
 
 export default defineComponent({
   name: 'App',
-  // components: {
-  //   HelloWorld
-  // },
+  components: {
+    HelloWorld
+  },
   setup() {
-    const aaa = ''
+    const aaa = '';
+    const items = [
+      {
+        name: '1212'
+      },
+      {
+        name: '33333'
+      }
+    ]
     return {
+      items
       // aaa
     }
   }

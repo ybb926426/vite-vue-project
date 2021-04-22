@@ -30,17 +30,31 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, toRefs, PropType } from 'vue';
+
+type FieldMapToTime = [string, [string, string], string?][];
+interface Hello {
+  name: string;
+}
 export default defineComponent({
   name: 'HelloWorld',
   props: {
     msg: {
       type: String,
       required: true
+    },
+    items: {
+      type: Array as PropType<FieldMapToTime>,
+      default: () => []
     }
   },
-  setup: () => {
-    const count = ref(0)
+  setup: (props) => {
+    const count = ref(0);
+    props.items.forEach(value => {
+      console.log(value);
+    })
+    // const { msg, items } = toRefs(props);
+    // console.log(msg.value, 'msg', items.value);
     return { count }
   }
 })

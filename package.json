@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev-staging": "vite --open",
-    "dev-production": "vite",
-    "staging": "vite build",
-    "production": "vite build",
+    "dev-staging": "cross-env VUE_APP_DEPLOY_ENV=dev-staging vite --open",
+    "dev-production": "cross-env VUE_APP_DEPLOY_ENV=dev-production vite",
+    "staging": "cross-env VUE_APP_DEPLOY_ENV=dev-staging vite build",
+    "production": "cross-env VUE_APP_DEPLOY_ENV=dev-production vite build",
     "production:no-catch": "npm run clean:cache && npm run production",
     "preview": "npm run production && vite preview",
     "preview:dist": "vite preview",
@@ -45,6 +45,7 @@
     "commitizen": "^4.2.3",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.3.0",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -86,7 +87,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-customizable"
     }
   }
 }
