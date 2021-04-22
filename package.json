@@ -1,0 +1,91 @@
+{
+  "name": "vite-app-ts",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev-staging": "vite --open",
+    "dev-production": "vite",
+    "staging": "vite build",
+    "production": "vite build",
+    "production:no-catch": "npm run clean:cache && npm run production",
+    "preview": "npm run production && vite preview",
+    "preview:dist": "vite preview",
+    "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
+    "clean:lib": "npx rimraf node_modules",
+    "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
+    "lint:eslint": "eslint \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "ant-design-vue": "^2.0.0",
+    "axios": "^0.21.1",
+    "mockjs": "^1.1.0",
+    "vue": "^3.0.5",
+    "vue-i18n": "^9.0.0-rc.8",
+    "vue-router": "^4.0.4",
+    "vuex": "^4.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@types/lodash-es": "^4.17.4",
+    "@types/mockjs": "^1.0.3",
+    "@types/node": "^14.14.41",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "@vitejs/plugin-legacy": "^1.3.1",
+    "@vitejs/plugin-vue": "^1.1.4",
+    "@vitejs/plugin-vue-jsx": "^1.1.2",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "commitizen": "^4.2.3",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.6.0",
+    "http-proxy": "^1.18.1",
+    "husky": "^6.0.0",
+    "less": "^4.1.1",
+    "lint-staged": "^10.5.4",
+    "lodash-es": "^4.17.21",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "stylelint": "^13.11.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3",
+    "vite": "^2.0.1",
+    "vite-plugin-compression": "^0.2.2",
+    "vite-plugin-html": "^2.0.2",
+    "vite-plugin-imagemin": "^0.2.8",
+    "vite-plugin-mock": "^2.1.5",
+    "vite-plugin-purge-icons": "^0.7.0",
+    "vite-plugin-pwa": "^0.5.6",
+    "vite-plugin-style-import": "^0.7.5",
+    "vite-plugin-theme": "^0.4.8",
+    "vite-plugin-windicss": "^0.6.2",
+    "vue-eslint-parser": "^7.5.0"
+  },
+  "lint-staged": {
+    "src/*.{js,jsx,mjs,ts,tsx}": [
+      "node_modules/.bin/prettier --write",
+      "eslint --config .eslintrc.js"
+    ],
+    "src/*.{css,scss,less,json,html,md,markdown}": [
+      "node_modules/.bin/prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
